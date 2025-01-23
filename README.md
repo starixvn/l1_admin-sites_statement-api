@@ -11,6 +11,7 @@ This service provides API endpoints to fetch daily statement data with specific 
 - Node.js (v20 or higher)
 - MongoDB
 - npm or yarn
+- Docker (optional)
 
 ## Installation
 
@@ -30,6 +31,35 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+```
+
+## Docker
+
+### Building the Image
+
+```bash
+# Build the Docker image
+docker build -t daily-statements-api .
+```
+
+### Running with Docker
+
+```bash
+# Run the container
+docker run -p 3000:3000 --env-file .env daily-statements-api
+```
+
+### Using Docker Compose
+
+```bash
+# Start the service
+docker-compose up
+
+# Start in detached mode
+docker-compose up -d
+
+# Stop the service
+docker-compose down
 ```
 
 ## API Documentation
@@ -63,3 +93,7 @@ Create a `.env` file in the root directory with the following variables:
 ```env
 MONGODB_URI=your_mongodb_connection_string
 ```
+
+## License
+
+This project is licensed under the MIT License.
