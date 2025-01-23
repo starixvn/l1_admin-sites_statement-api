@@ -1,0 +1,37 @@
+{
+  "USD": {
+    "stake": 19,
+    "payout": 19.6,
+    "refund": 0,
+    "winloss": 0.6,
+    "win": 0.6,
+    "loss": 0
+  },
+  "VND": {
+    "stake": 484177.5552,
+    "payout": 499467.3727,
+    "refund": 0,
+    "winloss": 15289.8175,
+    "win": 15289.8175,
+    "loss": 0
+  },
+  "code": "USD",
+  "currency": "YEN",
+  "gameId": 2,
+  "isTest": 0,
+  "loss": 0,
+  "operatorId": "ONEworks1",
+  "payout": 19.6,
+  "playerId": "105113619",
+  "refund": 0,
+  "roundId": 3731339,
+  "roundTime": { "$date": "2024-12-31T15:39:12.001Z" },
+  "siteId": "",
+  "siteName": "y789",
+  "stake": 19,
+  "subRoundId": 3731339,
+  "tickets": 1,
+  "time": { "$date": "2024-12-31T15:38:52.078Z" },
+  "win": 0.6,
+  "winloss": 0.6
+}
