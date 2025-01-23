@@ -17,7 +17,7 @@ import { configValidationSchema } from './config/configuration.schema';
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         uri: configService.get<string>('MONGODB_URI'),
-        dbName: 'summary_arc',
+        dbName: configService.get<string>('MONGODB_DB_NAME'),
       }),
       inject: [ConfigService],
     }),
