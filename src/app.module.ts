@@ -4,6 +4,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { DailyStatementsModule } from './daily-statements/daily-statements.module';
+import { HealthModule } from './health/health.module';
 import { configValidationSchema } from './config/configuration.schema';
 
 @Module({
@@ -22,6 +23,7 @@ import { configValidationSchema } from './config/configuration.schema';
       inject: [ConfigService],
     }),
     DailyStatementsModule,
+    HealthModule,
   ],
 })
 export class AppModule {}
