@@ -40,7 +40,7 @@ COPY --chown=nestjs:nodejs .env* ./
 # Use non-root user
 USER nestjs
 
-# Expose the port the app runs on
+# Expose the new port
 EXPOSE 5000
 
 # Start the application
