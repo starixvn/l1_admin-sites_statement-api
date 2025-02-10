@@ -4,16 +4,16 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { DailyStatementsModule } from './daily-statements/daily-statements.module';
+import { PlayerTicketsModule } from './player-tickets/player-tickets.module';
 import { HealthModule } from './health/health.module';
-import { configValidationSchema } from './config/configuration.schema';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
-      validationSchema: configValidationSchema,
     }),
+    // Connection for daily statements (summary_arc)
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
@@ -21,8 +21,20 @@ import { configValidationSchema } from './config/configuration.schema';
         dbName: configService.get<string>('MONGODB_DB_NAME'),
       }),
       inject: [ConfigService],
+      connectionName: 'summary_arc',
+    }),
+    // Connection for player tickets (minigame_arc)
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGODB_URI_SECOND'),
+        dbName: configService.get<string>('MONGODB_DB_NAME_SECOND'),
+      }),
+      inject: [ConfigService],
+      connectionName: 'minigame_arc',
     }),
     DailyStatementsModule,
+    PlayerTicketsModule,
     HealthModule,
   ],
 })

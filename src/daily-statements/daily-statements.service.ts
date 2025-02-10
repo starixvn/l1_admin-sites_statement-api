@@ -7,7 +7,7 @@ import { GetDailyStatementDto } from './dto/get-daily-statement.dto';
 @Injectable()
 export class DailyStatementsService {
   constructor(
-    @InjectModel(DailyStatement.name)
+    @InjectModel(DailyStatement.name, 'summary_arc')
     private dailyStatementModel: Model<DailyStatement>,
   ) {}
 

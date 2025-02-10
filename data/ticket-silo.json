@@ -1,0 +1,40 @@
+{
+  "code": "USD",
+  "currency": "UT",
+  "gameId": 2,
+  "isTest": 0,
+  "loss": 0,
+  "operatorId": "ONEworks1",
+  "payout": 47.04,
+  "playerId": "163730250",
+  "refund": 0,
+  "roundId": 3468736,
+  "roundTime": {
+    "$date": "2024-09-01T00:00:24.000Z"
+  },
+  "siteName": "yUT",
+  "stake": 24,
+  "subRoundId": 3468736,
+  "tickets": 1,
+  "time": {
+    "$date": "2024-08-31T23:59:54.666Z"
+  },
+  "USD": {
+    "loss": 0,
+    "payout": 47.04,
+    "refund": 0,
+    "stake": 24,
+    "win": 23.04,
+    "winloss": 23.04
+  },
+  "VND": {
+    "loss": 0,
+    "payout": 1171131.36,
+    "refund": 0,
+    "stake": 597516,
+    "win": 573615.36,
+    "winloss": 573615.36
+  },
+  "win": 23.04,
+  "winloss": 23.04
+}
