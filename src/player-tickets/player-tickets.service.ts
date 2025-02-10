@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { PlayerTicket } from './schemas/player-ticket.schema';
 import { GetPlayerTicketsDto } from './dto/get-player-tickets.dto';
+import { GetRewardPointsDto } from './dto/get-reward-points.dto';
 
 @Injectable()
 export class PlayerTicketsService {
@@ -70,6 +71,40 @@ export class PlayerTicketsService {
         l: limit,
         tp: Math.ceil(total / limit),
       },
+    };
+  }
+
+  async calculateRewardPoints(params: GetRewardPointsDto) {
+    const { playerId, date, minStake = 0, cappedPoint = 100 } = params;
+
+    const startDate = new Date(date + 'T00:00:00.000Z');
+    const endDate = new Date(date + 'T23:59:59.999Z');
+
+    const tickets = await this.playerTicketModel
+      .find({
+        playerId,
+        time: {
+          $gte: startDate,
+          $lte: endDate,
+        },
+        stake: { $gte: minStake },
+      })
+      .select({
+        win: 1,
+        _id: 0,
+      })
+      .lean()
+      .exec();
+
+    // Calculate total reward points
+    const totalPoints = tickets.reduce((sum, ticket) => {
+      const points = Math.min(ticket.win / 100, cappedPoint);
+      return sum + points;
+    }, 0);
+
+    return {
+      pid: playerId,
+      rp: Math.floor(totalPoints), // Round down to nearest integer
     };
   }
 }
