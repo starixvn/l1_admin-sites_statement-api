@@ -125,6 +125,7 @@ export class PlayerTicketsService {
     return {
       d: sortedResults,
       t: sortedResults.length,
+      date: startDate.toISOString().split('T')[0], // Format: YYYY-MM-DD
     };
   }
 }
