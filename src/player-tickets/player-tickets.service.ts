@@ -75,36 +75,56 @@ export class PlayerTicketsService {
   }
 
   async calculateRewardPoints(params: GetRewardPointsDto) {
-    const { playerId, date, minStake = 0, cappedPoint = 100 } = params;
+    const { date, minStake = 0, cappedPoint = 100 } = params;
 
     const startDate = new Date(date + 'T00:00:00.000Z');
     const endDate = new Date(date + 'T23:59:59.999Z');
 
+    // Reuse existing query pattern but get all tickets
     const tickets = await this.playerTicketModel
       .find({
-        playerId,
         time: {
           $gte: startDate,
           $lte: endDate,
         },
         stake: { $gte: minStake },
+        win: { $gt: 0 },
       })
       .select({
+        playerId: 1,
         win: 1,
         _id: 0,
       })
       .lean()
       .exec();
 
-    // Calculate total reward points
-    const totalPoints = tickets.reduce((sum, ticket) => {
-      const points = Math.min(ticket.win / 100, cappedPoint);
-      return sum + points;
-    }, 0);
+    // Group tickets by player and calculate points
+    const playerPoints = tickets.reduce((acc, ticket) => {
+      if (!acc[ticket.playerId]) {
+        acc[ticket.playerId] = 0;
+      }
+
+      // Calculate points for this ticket
+      const points = ticket.win > 0 ? Math.min(ticket.win / 100, cappedPoint) : 0;
+      acc[ticket.playerId] += points;
+
+      return acc;
+    }, {});
+
+    // Transform to array and format response
+    const results = Object.entries(playerPoints).map(([playerId, points]) => ({
+      pid: playerId,
+      rp: Math.floor(points as number),
+    }));
+
+    // Sort by points descending
+    const filteredResults = results.filter((result) => result.rp > 0);
+
+    const sortedResults = filteredResults.sort((a, b) => b.rp - a.rp);
 
     return {
-      pid: playerId,
-      rp: Math.floor(totalPoints), // Round down to nearest integer
+      d: sortedResults,
+      t: sortedResults.length,
     };
   }
 }

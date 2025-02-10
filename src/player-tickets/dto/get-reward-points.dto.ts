@@ -1,16 +1,8 @@
-import { IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString, Min } from 'class-validator';
+import { IsDateString, IsNotEmpty, IsNumber, IsOptional, Min } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class GetRewardPointsDto {
-  @ApiProperty({
-    description: 'Player ID',
-    example: 'player123',
-  })
-  @IsNotEmpty()
-  @IsString()
-  playerId: string;
-
   @ApiProperty({
     description: 'Date in YYYY-MM-DD format',
     example: '2024-03-20',

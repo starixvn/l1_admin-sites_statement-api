@@ -20,20 +20,32 @@ export class PlayerTicketsController {
   }
 
   @Get('reward-points')
-  @ApiOperation({ summary: 'Calculate reward points for player' })
+  @ApiOperation({ summary: 'Calculate reward points for all players' })
   @ApiResponse({
     status: 200,
-    description: 'Returns total reward points for the player',
+    description: 'Returns reward points for all players',
     schema: {
       type: 'object',
       properties: {
-        pid: {
-          type: 'string',
-          example: 'player123',
+        d: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              pid: {
+                type: 'string',
+                example: 'player123',
+              },
+              rp: {
+                type: 'number',
+                example: 150,
+              },
+            },
+          },
         },
-        rp: {
+        t: {
           type: 'number',
-          example: 150,
+          example: 10,
         },
       },
     },
