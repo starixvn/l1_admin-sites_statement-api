@@ -8,7 +8,7 @@ import { GetRewardPointsDto } from './dto/get-reward-points.dto';
 @Injectable()
 export class PlayerTicketsService {
   constructor(
-    @InjectModel(PlayerTicket.name, 'minigame_arc')
+    @InjectModel(PlayerTicket.name, 'minigame')
     private playerTicketModel: Model<PlayerTicket>,
   ) {}
 

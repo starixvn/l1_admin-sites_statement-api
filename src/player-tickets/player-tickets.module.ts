@@ -13,7 +13,7 @@ import { PlayerTicket, PlayerTicketSchema } from './schemas/player-ticket.schema
           schema: PlayerTicketSchema,
         },
       ],
-      'minigame_arc',
+      'minigame',
     ), // Use minigame_arc connection
   ],
   controllers: [PlayerTicketsController],

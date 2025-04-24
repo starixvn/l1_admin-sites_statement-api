@@ -13,7 +13,7 @@ import { DailyStatement, DailyStatementSchema } from './schemas/daily-statement.
           schema: DailyStatementSchema,
         },
       ],
-      'summary_arc',
+      'summary',
     ), // Use summary_arc connection
   ],
   controllers: [DailyStatementsController],

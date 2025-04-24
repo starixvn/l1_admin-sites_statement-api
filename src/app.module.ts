@@ -13,7 +13,7 @@ import { HealthModule } from './health/health.module';
       isGlobal: true,
       envFilePath: '.env',
     }),
-    // Connection for daily statements (summary_arc)
+    // Connection for daily statements (summary)
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
@@ -23,7 +23,7 @@ import { HealthModule } from './health/health.module';
       inject: [ConfigService],
       connectionName: 'summary',
     }),
-    // Connection for player tickets (minigame_arc)
+    // Connection for player tickets (minigame)
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
