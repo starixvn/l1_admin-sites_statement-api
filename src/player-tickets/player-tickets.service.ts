@@ -13,7 +13,7 @@ export class PlayerTicketsService {
   ) {}
 
   async findByPlayerIdAndDate(params: GetPlayerTicketsDto) {
-    const { playerId, date, page = 1, limit = 100 } = params;
+    const { playerId, date, page = 1, limit = 1000 } = params;
     const skip = (page - 1) * limit;
 
     // Create date range for the same date
