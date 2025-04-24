@@ -28,7 +28,6 @@ export class PlayerTicketsService {
             $gte: startDate,
             $lte: endDate,
           },
-          win: { $gt: 0 },
         })
         .select({
           playerId: 1,
