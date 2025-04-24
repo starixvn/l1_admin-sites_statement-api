@@ -21,7 +21,7 @@ import { HealthModule } from './health/health.module';
         dbName: configService.get<string>('MONGODB_DB_NAME'),
       }),
       inject: [ConfigService],
-      connectionName: 'summary_arc',
+      connectionName: 'summary',
     }),
     // Connection for player tickets (minigame_arc)
     MongooseModule.forRootAsync({
@@ -31,7 +31,7 @@ import { HealthModule } from './health/health.module';
         dbName: configService.get<string>('MONGODB_DB_NAME_SECOND'),
       }),
       inject: [ConfigService],
-      connectionName: 'minigame_arc',
+      connectionName: 'minigame',
     }),
     DailyStatementsModule,
     PlayerTicketsModule,

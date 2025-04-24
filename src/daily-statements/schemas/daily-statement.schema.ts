@@ -10,7 +10,7 @@ interface CurrencyStats {
   loss: number;
 }
 
-@Schema({ collection: 'daily_statements_bk' })
+@Schema({ collection: 'daily_statements' })
 export class DailyStatement extends Document {
   @Prop({ type: Object })
   USD: CurrencyStats;

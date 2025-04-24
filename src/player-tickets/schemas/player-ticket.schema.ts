@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
-@Schema({ collection: 'ticket_silos_bk' })
+@Schema({ collection: 'ticket_silos' })
 export class PlayerTicket {
   @Prop()
   playerId: string;
