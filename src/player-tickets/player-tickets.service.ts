@@ -32,6 +32,7 @@ export class PlayerTicketsService {
         .select({
           playerId: 1,
           gameId: 1,
+          roundId: 1,
           win: 1,
           stake: 1,
           payout: 1,
@@ -56,6 +57,7 @@ export class PlayerTicketsService {
     const transformedData = data.map((ticket) => ({
       pid: ticket.playerId,
       gid: ticket.gameId,
+      rid: ticket.roundId,
       w: ticket.win,
       s: ticket.stake,
       p: ticket.payout,

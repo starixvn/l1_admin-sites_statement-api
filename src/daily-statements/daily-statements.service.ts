@@ -30,6 +30,7 @@ export class DailyStatementsService {
           stake: 1,
           loss: 1,
           gameId: 1,
+          roundId: 1,
           payout: 1,
           time: 1,
           _id: 0,

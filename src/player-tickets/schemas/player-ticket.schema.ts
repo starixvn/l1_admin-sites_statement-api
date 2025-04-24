@@ -22,6 +22,9 @@ export class PlayerTicket {
 
   @Prop()
   time: Date;
+
+  @Prop()
+  roundId: number;
 }
 
 export const PlayerTicketSchema = SchemaFactory.createForClass(PlayerTicket);
