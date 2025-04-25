@@ -25,6 +25,9 @@ export class PlayerTicket {
 
   @Prop()
   roundId: number;
+
+  @Prop()
+  subRoundId: number;
 }
 
 export const PlayerTicketSchema = SchemaFactory.createForClass(PlayerTicket);
